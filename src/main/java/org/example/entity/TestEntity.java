@@ -1,15 +1,13 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.constant.TEST_ENUM;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-@Data
+@Getter
+@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "")
