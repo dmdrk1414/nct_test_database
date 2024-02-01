@@ -24,7 +24,7 @@
 - [x] TempUser MBTI의 Enum 넣기
 - [ ] AttendanceCheckTime에 enum 넣기
 - [ ] 전체적으로 제약조건 넣기 (조건)
-- [ ] Set 메서드 구현
+- [ ] Set 메서드 구현 (set 불가)
 
 # 엔티티 체크
 
