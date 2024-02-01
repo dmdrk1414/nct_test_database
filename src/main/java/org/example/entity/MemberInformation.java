@@ -55,4 +55,36 @@ public class MemberInformation {
         this.introduction = introduction;
         this.photo = photo;
     }
+
+    public void updateGpa(String gpa) {
+        this.gpa = gpa;
+    }
+
+    public void updateMbti(MBTI mbti) {
+        this.mbti = mbti;
+    }
+
+    public void updateHobby(String hobby) {
+        this.hobby = hobby;
+    }
+
+    public void updateSpecialtySkill(String specialtySkill) {
+        this.specialtySkill = specialtySkill;
+    }
+
+    public void updateAdvantage(String advantage) {
+        this.advantage = advantage;
+    }
+
+    public void updateDisadvantage(String disadvantage) {
+        this.disadvantage = disadvantage;
+    }
+
+    public void updateIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public void updatePhoto(String photo) {
+        this.photo = photo;
+    }
 }
