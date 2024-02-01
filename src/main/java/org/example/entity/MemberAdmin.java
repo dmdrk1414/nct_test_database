@@ -36,4 +36,16 @@ public class MemberAdmin {
         this.password = password;
         this.grade = grade;
     }
+
+    public void updateEmail(String email) {
+        this.email = email;
+    }
+
+    public void updatePassword(String password) {
+        this.password = password;
+    }
+
+    public void updateGrade(MEMBER_GRADE grade) {
+        this.grade = grade;
+    }
 }
