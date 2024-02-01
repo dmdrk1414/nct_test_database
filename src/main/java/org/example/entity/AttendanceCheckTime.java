@@ -24,23 +24,23 @@ public class AttendanceCheckTime {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "monday", length = 10)
+    @Column(name = "monday", length = 10, nullable = false)
     private ATTENDANCE_TIME monday;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "tuesday", length = 10)
+    @Column(name = "tuesday", length = 10, nullable = false)
     private ATTENDANCE_TIME tuesday;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "wednesday", length = 10)
+    @Column(name = "wednesday", length = 10, nullable = false)
     private ATTENDANCE_TIME wednesday;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "thursday", length = 10)
+    @Column(name = "thursday", length = 10, nullable = false)
     private ATTENDANCE_TIME thursday;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "friday", length = 10)
+    @Column(name = "friday", length = 10, nullable = false)
     private ATTENDANCE_TIME friday;
 
     @Enumerated(EnumType.STRING)
@@ -64,5 +64,30 @@ public class AttendanceCheckTime {
         this.wednesday = ATTENDANCE_TIME.TEN;
         this.thursday = ATTENDANCE_TIME.TEN;
         this.friday = ATTENDANCE_TIME.TEN;
+        this.longVacation = LONG_VACATION.NOT_APPLIED;
+    }
+
+    public void updateMonday(ATTENDANCE_TIME monday) {
+        this.monday = monday;
+    }
+
+    public void updateTuesday(ATTENDANCE_TIME tuesday) {
+        this.tuesday = tuesday;
+    }
+
+    public void updateWednesday(ATTENDANCE_TIME wednesday) {
+        this.wednesday = wednesday;
+    }
+
+    public void updateThursday(ATTENDANCE_TIME thursday) {
+        this.thursday = thursday;
+    }
+
+    public void updateFriday(ATTENDANCE_TIME friday) {
+        this.friday = friday;
+    }
+
+    public void updateLongVacation(LONG_VACATION longVacation) {
+        this.longVacation = longVacation;
     }
 }
