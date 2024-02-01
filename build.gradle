@@ -33,6 +33,9 @@ dependencies {
     // 반복 메서드 작성 작업을 줄여준다.
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    // 스프링 애플리케이션을 테스트하기 위해 필요한 의존성 모음
+    testImplementation 'org.springframework.boot:spring-boot-starter-test' // 테스트 기능
 }
 
 test {
