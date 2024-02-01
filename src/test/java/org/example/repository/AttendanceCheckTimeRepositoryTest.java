@@ -1,5 +1,6 @@
 package org.example.repository;
 
+import org.example.constant.ATTENDANCE_TIME;
 import org.example.constant.LONG_VACATION;
 import org.example.entity.AttendanceCheckTime;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,6 +47,14 @@ class AttendanceCheckTimeRepositoryTest {
         }
         for (int i = 10; i < attendanceCheckTimes.size(); i++) {
             assertThat(attendanceCheckTimes.get(i).getLongVacation()).isEqualTo(LONG_VACATION.APPLIED);
+        }
+
+        for (int i = 0; i < 20; i++) {
+            assertThat(attendanceCheckTimes.get(i).getMonday()).isEqualTo(ATTENDANCE_TIME.TEN);
+            assertThat(attendanceCheckTimes.get(i).getTuesday()).isEqualTo(ATTENDANCE_TIME.TEN);
+            assertThat(attendanceCheckTimes.get(i).getWednesday()).isEqualTo(ATTENDANCE_TIME.TEN);
+            assertThat(attendanceCheckTimes.get(i).getThursday()).isEqualTo(ATTENDANCE_TIME.TEN);
+            assertThat(attendanceCheckTimes.get(i).getFriday()).isEqualTo(ATTENDANCE_TIME.TEN);
         }
     }
 }
