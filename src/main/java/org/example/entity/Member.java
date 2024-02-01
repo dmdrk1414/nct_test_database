@@ -68,4 +68,28 @@ public class Member {
         // TODO: 2/2/24 날짜 확인
         this.registration = String.valueOf(zonedDateTime.toLocalDate().getYear());
     }
+
+    public void updateFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void updateLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void updatePhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void updateMajor(String major) {
+        this.major = major;
+    }
+
+    public void updateBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public void updateStudentId(String studentId) {
+        this.studentId = studentId;
+    }
 }
