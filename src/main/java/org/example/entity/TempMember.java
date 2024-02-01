@@ -52,8 +52,8 @@ public class TempMember {
     @Column(name = "birth_date", length = 20, nullable = false)
     private String birthDate;
 
-    @Column(name = "advantages", length = 1000, nullable = false)
-    private String advantages;
+    @Column(name = "advantage", length = 1000, nullable = false)
+    private String advantage;
 
     @Column(name = "disadvantage", length = 1000, nullable = false)
     private String disadvantage;
