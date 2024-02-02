@@ -28,7 +28,7 @@ public class AttendanceNumber {
     @Column(name = "attendance_number_id")
     private Long attendanceNumberId;
 
-    @Column(name = "attendance_number", length = 10)
+    @Column(name = "attendance_number", length = 10, nullable = false)
     private String attendanceNumber;
 
     @Temporal(TemporalType.DATE)
