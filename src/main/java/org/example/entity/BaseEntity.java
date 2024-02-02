@@ -11,7 +11,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.time.LocalDateTime;
+import java.time.*;
 
 @Data
 @NoArgsConstructor
@@ -40,4 +40,26 @@ public class BaseEntity {
     @Column(name = "udt_dt")
     @UpdateTimestamp
     private LocalDateTime udtDt;
+
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name = "attendance_date")
+//    private LocalDateTime attendanceDate;
+//
+//    @Temporal(TemporalType.TIME)
+//    private LocalTime time;
+//
+//    @Temporal(TemporalType.DATE)
+//    private LocalDate date;
+//
+//    @PrePersist
+//    protected void onCreate() {
+////        this.attendanceDate = LocalDate.now();
+//        LocalDateTime dateTime = LocalDateTime.now();
+//        ZonedDateTime zonedDateTime = ZonedDateTime.of(dateTime, ZoneId.of("Asia/Seoul"));
+//        this.attendanceDate = zonedDateTime.toLocalDateTime();
+//        this.time = zonedDateTime.toLocalTime();
+//        this.date = zonedDateTime.toLocalDate();
+
+//      this.attendanceDate = LocalDate.now();
+//    }
 }
