@@ -14,6 +14,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.sql.Date;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 
 /**
@@ -38,6 +39,10 @@ public class AttendanceNumber {
     @Temporal(TemporalType.DATE)
     @Column(name = "attendance_date", nullable = false)
     private LocalDate attendanceDate;
+
+    public String getAttendanceDate() {
+        return attendanceDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
 
     @PrePersist
     protected void onCreate() {
