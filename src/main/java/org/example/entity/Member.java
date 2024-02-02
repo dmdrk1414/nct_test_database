@@ -42,7 +42,7 @@ public class Member {
     @Column(name = "student_id", length = 15, nullable = false)
     private String studentId;
 
-    @Column(name = "registration", nullable = false)
+    @Column(name = "registration", length = 10, nullable = false)
     private String registration;
 
 
