@@ -1,11 +1,10 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.constant.LongVacation;
+import org.example.constant.LONG_VACATION;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -47,10 +46,10 @@ public class AttendanceCheckTime {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "long_vacation", length = 15, nullable = false)
-    private LongVacation longVacation;
+    private LONG_VACATION longVacation;
 
     @Builder
-    public AttendanceCheckTime(String monday, String tuesday, String wednesday, String thursday, String friday, LongVacation longVacation) {
+    public AttendanceCheckTime(String monday, String tuesday, String wednesday, String thursday, String friday, LONG_VACATION longVacation) {
         this.monday = monday;
         this.tuesday = tuesday;
         this.wednesday = wednesday;

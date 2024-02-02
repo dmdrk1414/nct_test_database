@@ -1,5 +1,5 @@
 package org.example.constant;
 
-public enum LongVacation {
+public enum LONG_VACATION {
     APPLIED, NOT_APPLIED
 }
