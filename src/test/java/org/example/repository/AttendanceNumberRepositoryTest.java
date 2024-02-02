@@ -33,7 +33,7 @@ class AttendanceNumberRepositoryTest {
     }
 
     @Test
-    void AttendanceNumber_저장_랜덤숫자_테스트() {
+    void AttendanceNumber_저장_테스트() {
 //        LocalDateTime dateTime = LocalDateTime.now();
 //        ZonedDateTime zonedDateTime = ZonedDateTime.of(dateTime, ZoneId.of("Asia/Seoul"));
 
