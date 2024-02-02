@@ -1,5 +1,6 @@
 package org.example.repository;
 
+import org.example.constant.MBTI;
 import org.example.entity.Member;
 import org.example.entity.TempMember;
 import org.example.myutill.CustomLocalDate;
@@ -42,7 +43,7 @@ class TempMemberRepositoryTest {
                             .gpa("4.5")
                             .specialtySkill("100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 ")
                             .hobby("달리기")
-                            .mbti("MBTI")
+                            .mbti(MBTI.ENTP)
                             .studentId("20249999")
                             .birthDate(CustomLocalDate.parse2BirthDateFromString("1996-04-15"))
                             .advantage("100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 100자테스트 ")
@@ -63,6 +64,7 @@ class TempMemberRepositoryTest {
             assertThat(tempMembers.get(i).getLastName()).isEqualTo("승찬");
             assertThat(tempMembers.get(i).getPhoneNumber()).isEqualTo("010-0000-0000");
             assertThat(tempMembers.get(i).getBirthDate()).contains("1996-04-15");
+            assertThat(tempMembers.get(i).getMbti()).isEqualTo(MBTI.ENTP);
         }
     }
 }

@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
+import org.example.constant.MBTI;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -47,8 +48,9 @@ public class TempMember {
     @Column(name = "hobby", length = 255, nullable = false)
     private String hobby;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "mbti", length = 10, nullable = false)
-    private String mbti;
+    private MBTI mbti;
 
     @Column(name = "student_id", length = 15, nullable = false)
     private String studentId;
@@ -75,7 +77,7 @@ public class TempMember {
     private String password;
 
     @Builder
-    public TempMember(String firstName, String lastName, String phoneNumber, String major, String gpa, String specialtySkill, String hobby, String mbti, String studentId, LocalDate birthDate, String advantage, String disadvantage, String introduction, String photo, String email, String password) {
+    public TempMember(String firstName, String lastName, String phoneNumber, String major, String gpa, String specialtySkill, String hobby, MBTI mbti, String studentId, LocalDate birthDate, String advantage, String disadvantage, String introduction, String photo, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
