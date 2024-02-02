@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
 
+/**
+ * 스터디 팀에 참가를 원하는 신입 회원을 위한 테이블
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
