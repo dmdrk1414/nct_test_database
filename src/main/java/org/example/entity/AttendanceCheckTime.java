@@ -10,14 +10,11 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-
+/**
+ * 회원들의 출석시간을 월, 화, 수 목, 금요일에 지정할 수 있다.
+ */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @DynamicInsert
 @DynamicUpdate
@@ -51,4 +48,14 @@ public class AttendanceCheckTime {
     @Enumerated(EnumType.STRING)
     @Column(name = "long_vacation", length = 15, nullable = false)
     private LongVacation longVacation;
+
+    @Builder
+    public AttendanceCheckTime(String monday, String tuesday, String wednesday, String thursday, String friday, LongVacation longVacation) {
+        this.monday = monday;
+        this.tuesday = tuesday;
+        this.wednesday = wednesday;
+        this.thursday = thursday;
+        this.friday = friday;
+        this.longVacation = longVacation;
+    }
 }

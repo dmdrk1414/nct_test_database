@@ -23,8 +23,6 @@ import java.time.format.DateTimeFormatter;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "attendance_number")
 public class AttendanceNumber {

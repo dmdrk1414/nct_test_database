@@ -14,8 +14,6 @@ import jakarta.persistence.*;
  */
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "temp_member")
 public class TempMember {
@@ -52,6 +50,7 @@ public class TempMember {
     @Column(name = "student_id", length = 15, nullable = false)
     private String studentId;
 
+    // TODO: 2/2/24 LocalDate으로 변경
     @Column(name = "birth_date", length = 20, nullable = false)
     private String birthDate;
 
@@ -72,4 +71,24 @@ public class TempMember {
 
     @Column(name = "password", length = 100, nullable = false)
     private String password;
+
+    @Builder
+    public TempMember(String firstName, String lastName, String phoneNumber, String major, String gpa, String specialtySkill, String hobby, String mbti, String studentId, String birthDate, String advantage, String disadvantage, String introduction, String photo, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.major = major;
+        this.gpa = gpa;
+        this.specialtySkill = specialtySkill;
+        this.hobby = hobby;
+        this.mbti = mbti;
+        this.studentId = studentId;
+        this.birthDate = birthDate;
+        this.advantage = advantage;
+        this.disadvantage = disadvantage;
+        this.introduction = introduction;
+        this.photo = photo;
+        this.email = email;
+        this.password = password;
+    }
 }
