@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -20,7 +21,6 @@ import java.time.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@DynamicInsert //애노테이션은 엔티티를 save할 때 null 값은 배제하고 insert 쿼리를 날리도록 한다
 @Table(name = "attendance_number")
 public class AttendanceNumber {
     @Id
@@ -28,11 +28,11 @@ public class AttendanceNumber {
     @Column(name = "attendance_number_id")
     private Long attendanceNumberId;
 
-    @Column(name = "attendance_number", length = 10, nullable = false)
+    @Column(name = "attendance_number", length = 10)
     private String attendanceNumber;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "attendance_date")
+    @Column(name = "attendance_date", nullable = false)
     private LocalDate attendanceDate;
 
     @PrePersist
@@ -41,5 +41,9 @@ public class AttendanceNumber {
         LocalDateTime dateTime = LocalDateTime.now();
         ZonedDateTime zonedDateTime = ZonedDateTime.of(dateTime, ZoneId.of("Asia/Seoul"));
         this.attendanceDate = zonedDateTime.toLocalDate();
+
+        // 1부터 9까지 랜덤한 4자리 숫자 생성
+        int randomAttendanceNumber = (int) (Math.random() * 9_000) + 1_000;
+        this.attendanceNumber = String.valueOf(randomAttendanceNumber);
     }
 }
