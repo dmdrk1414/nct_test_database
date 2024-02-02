@@ -32,6 +32,6 @@ class AttendanceNumberRepositoryTest {
                         .build()
         );
 
-        System.out.println("new Date() = " + new Date());
+        System.out.println("new Date() = " + new java.util.Date().getTime());
     }
 }

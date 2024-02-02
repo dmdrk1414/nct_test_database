@@ -5,14 +5,21 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.util.Date;
+import java.sql.Date;
+import java.time.*;
+
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
+@EntityListeners(AuditingEntityListener.class) // 추가
 @Table(name = "attendance_number")
 public class AttendanceNumber {
     @Id
@@ -25,11 +32,13 @@ public class AttendanceNumber {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "attendance_date")
-    private Date attendanceDate;
-
+    private LocalDate attendanceDate;
 
     @PrePersist
     protected void onCreate() {
-        this.attendanceDate = new Date();
+        // https://www.daleseo.com/java8-zoned-date-time/
+        LocalDateTime dateTime = LocalDateTime.now();
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(dateTime, ZoneId.of("Asia/Seoul"));
+        this.attendanceDate = zonedDateTime.toLocalDate();
     }
 }
