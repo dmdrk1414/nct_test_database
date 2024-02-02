@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * 스터디 팀에 참가를 원하는 신입 회원을 위한 테이블
  */
@@ -50,9 +53,8 @@ public class TempMember {
     @Column(name = "student_id", length = 15, nullable = false)
     private String studentId;
 
-    // TODO: 2/2/24 LocalDate으로 변경
-    @Column(name = "birth_date", length = 20, nullable = false)
-    private String birthDate;
+    @Column(name = "birth_date", nullable = false)
+    private LocalDate birthDate;
 
     @Column(name = "advantage", length = 1000, nullable = false)
     private String advantage;
@@ -73,7 +75,7 @@ public class TempMember {
     private String password;
 
     @Builder
-    public TempMember(String firstName, String lastName, String phoneNumber, String major, String gpa, String specialtySkill, String hobby, String mbti, String studentId, String birthDate, String advantage, String disadvantage, String introduction, String photo, String email, String password) {
+    public TempMember(String firstName, String lastName, String phoneNumber, String major, String gpa, String specialtySkill, String hobby, String mbti, String studentId, LocalDate birthDate, String advantage, String disadvantage, String introduction, String photo, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -90,5 +92,9 @@ public class TempMember {
         this.photo = photo;
         this.email = email;
         this.password = password;
+    }
+
+    public String getBirthDate() {
+        return birthDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 }
