@@ -33,6 +33,7 @@
   - [x] MemberInformation
   - [ ] TempMember (update 필요없음)
   - [x] VacationCount
+- [ ] LocalData => get String 보장 확인
 
 # 엔티티 체크
 
