@@ -2,10 +2,7 @@ package org.example.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import jakarta.persistence.*;
 import org.example.constant.MBTI;
@@ -16,7 +13,8 @@ import java.time.format.DateTimeFormatter;
 /**
  * 스터디 팀에 참가를 원하는 신입 회원을 위한 테이블
  */
-@Data
+@Getter
+@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "temp_member")

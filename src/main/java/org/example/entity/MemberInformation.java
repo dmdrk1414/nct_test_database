@@ -1,16 +1,15 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.constant.MBTI;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.LocalDate;
 
-@Data
+@Getter
+@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "member_information")

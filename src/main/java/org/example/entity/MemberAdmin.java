@@ -1,9 +1,7 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.constant.MEMBER_GRADE;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -11,7 +9,8 @@ import org.hibernate.annotations.DynamicUpdate;
 /**
  * 회원의 등급과, 이메일, 비밀번호를 관리한다.
  */
-@Data
+@Getter
+@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "member_admin")

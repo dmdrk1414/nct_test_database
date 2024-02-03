@@ -1,10 +1,7 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
@@ -21,7 +18,8 @@ import java.time.format.DateTimeFormatter;
  * 모든 팀들의 회원들이 출석을 하기위한 출석 번호
  * 랜덤으로 4자리 1~9의 숫자가 생성된다.
  */
-@Data
+@Getter
+@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "attendance_number")

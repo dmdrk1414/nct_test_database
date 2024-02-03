@@ -1,9 +1,7 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.example.constant.LONG_VACATION;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
@@ -12,7 +10,8 @@ import org.hibernate.annotations.DynamicUpdate;
 /**
  * 회원들의 출석시간을 월, 화, 수 목, 금요일에 지정할 수 있다.
  */
-@Data
+@Getter
+@ToString
 @NoArgsConstructor
 @Entity
 @DynamicInsert

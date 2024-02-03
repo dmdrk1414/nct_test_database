@@ -22,7 +22,9 @@
 
 - [x] TempUser 생년월일 Date으로 하고 , 테스트 코드만들
 - [x] TempUser MBTI의 Enum 넣기
+- [ ] AttendanceCheckTime에 enum 넣기
 - [ ] 전체적으로 제약조건 넣기 (조건)
+- [ ] Set 메서드 구현
 
 # 엔티티 체크
 
@@ -33,6 +35,7 @@
 - [ ] 제약 조건 확인
 - [ ] LocalDate는 문자열로 getMethd String 보장
 - [ ] id 없는 Builder 보장의 생성자 
+- [ ] Set 메서드로 막아버리기
 
 # 기본 엔티티 넣어야할꺼 
 
