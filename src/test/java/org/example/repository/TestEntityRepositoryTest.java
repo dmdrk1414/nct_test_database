@@ -31,5 +31,11 @@ class TestEntityRepositoryTest {
                         .build()
         );
 
+        testEntityRepository.save(
+                TestEntity.builder()
+                        .testEnum(TEST_ENUM.ADD)
+                        .build()
+        );
+
     }
 }

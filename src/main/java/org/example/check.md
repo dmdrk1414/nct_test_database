@@ -24,7 +24,15 @@
 - [x] TempUser MBTI의 Enum 넣기
 - [ ] AttendanceCheckTime에 enum 넣기
 - [ ] 전체적으로 제약조건 넣기 (조건)
-- [ ] Set 메서드 구현 (set 불가)
+- [ ] Set 메서드 구현 (set 불가) => UPDATE
+  - [x] AttendanceCheckTime
+  - [x] AttendanceNumber
+  - [x] AttendanceWeekDate
+  - [x] Member
+  - [x] MemberAdmin
+  - [x] MemberInformation
+  - [ ] TempMember (update 필요없음)
+  - [x] VacationCount
 
 # 엔티티 체크
 
