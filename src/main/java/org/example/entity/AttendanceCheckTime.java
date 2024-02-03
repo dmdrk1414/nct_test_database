@@ -14,8 +14,6 @@ import org.hibernate.annotations.DynamicUpdate;
 @ToString
 @NoArgsConstructor
 @Entity
-@DynamicInsert
-@DynamicUpdate
 @Table(name = "attendance_check_time")
 public class AttendanceCheckTime {
     @Id
