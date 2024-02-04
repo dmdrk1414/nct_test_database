@@ -65,7 +65,6 @@ public class Member {
         // https://www.daleseo.com/java8-zoned-date-time/
         LocalDateTime dateTime = LocalDateTime.now();
         ZonedDateTime zonedDateTime = ZonedDateTime.of(dateTime, ZoneId.of("Asia/Seoul"));
-        // TODO: 2/2/24 날짜 확인
         this.registration = String.valueOf(zonedDateTime.toLocalDate().getYear());
     }
 
