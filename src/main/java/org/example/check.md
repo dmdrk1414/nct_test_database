@@ -22,17 +22,20 @@
 
 - [x] TempUser 생년월일 Date으로 하고 , 테스트 코드만들
 - [x] TempUser MBTI의 Enum 넣기
+- [ ] 금융관련 페이지 (통장 보면서 저장)
 - [ ] AttendanceCheckTime에 enum 넣기
 - [ ] 전체적으로 제약조건 넣기 (조건)
 - [ ] Set 메서드 구현 (set 불가) => UPDATE
+  - [ ] 
   - [x] AttendanceCheckTime
   - [x] AttendanceNumber
   - [x] AttendanceWeekDate
   - [x] Member
   - [x] MemberAdmin
   - [x] MemberInformation
-  - [ ] TempMember (update 필요없음)
+  - [x] TempMember (update 필요없음)
   - [x] VacationCount
+  - [x] ArticleComment
 - [ ] LocalData => get String 보장 확인
 
 # 엔티티 체크
