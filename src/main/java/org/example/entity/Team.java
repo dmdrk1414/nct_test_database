@@ -14,7 +14,7 @@ public class Team {
     @Column(name = "team_id")
     private Long teamId;
 
-    @Column(name = "group_name", length = 30, nullable = false)
+    @Column(name = "group_name", length = 30, nullable = false, unique = true)
     private String groupName;
 
     @Builder
