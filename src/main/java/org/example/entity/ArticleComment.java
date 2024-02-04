@@ -26,8 +26,9 @@ public class ArticleComment {
     @Column(name = "content", length = 255, nullable = false)
     private String content;
 
-    @Column(name = "comment_date", length = 10, nullable = false)
-    private String commentDate;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "comment_date", nullable = false)
+    private LocalDate commentDate;
 
     @ColumnDefault(value = "0")
     @Column(name = "declaration_count")
@@ -47,8 +48,7 @@ public class ArticleComment {
         // https://www.daleseo.com/java8-zoned-date-time/
         LocalDateTime dateTime = LocalDateTime.now();
         ZonedDateTime zonedDateTime = ZonedDateTime.of(dateTime, ZoneId.of("Asia/Seoul"));
-        this.commentDate = zonedDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM"));
-
+        this.commentDate = zonedDateTime.toLocalDate();
     }
 
     public void updateContent(String content) {
@@ -73,5 +73,9 @@ public class ArticleComment {
 
     public void addLike() {
         this.likeCount = this.likeCount + 1;
+    }
+
+    public String getCommentDate() {
+        return this.commentDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 }
