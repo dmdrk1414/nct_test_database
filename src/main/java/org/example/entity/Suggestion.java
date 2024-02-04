@@ -4,6 +4,11 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.example.constant.SUGGESTION_CHECK;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
 
 @Getter
 @ToString
@@ -26,6 +31,10 @@ public class Suggestion {
     @Column(name = "suggestion_check", length = 15)
     private SUGGESTION_CHECK check;
 
+    @Temporal(TemporalType.DATE)
+    @Column(name = "suggestion_date", nullable = false)
+    private LocalDate suggestionDate;
+
     @Builder
     public Suggestion(String title, String content) {
         this.title = title;
@@ -34,6 +43,11 @@ public class Suggestion {
 
     @PrePersist
     protected void onCreate() {
+        // https://www.daleseo.com/java8-zoned-date-time/
+        LocalDateTime dateTime = LocalDateTime.now();
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(dateTime, ZoneId.of("Asia/Seoul"));
+        this.suggestionDate = zonedDateTime.toLocalDate();
+
         this.check = SUGGESTION_CHECK.UNCONFIRMED;
     }
 
