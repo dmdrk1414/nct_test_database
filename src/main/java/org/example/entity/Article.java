@@ -6,6 +6,11 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
 @Getter
 @ToString
 @NoArgsConstructor
@@ -25,6 +30,10 @@ public class Article {
     @Column(name = "content", length = 1000, nullable = false)
     private String content;
 
+    @Temporal(TemporalType.DATE)
+    @Column(name = "article_date", nullable = false)
+    private LocalDate articleDate;
+
     @ColumnDefault(value = "0")
     @Column(name = "declaration_count")
     private Integer declarationCount;
@@ -37,6 +46,14 @@ public class Article {
     public Article(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        // https://www.daleseo.com/java8-zoned-date-time/
+        LocalDateTime dateTime = LocalDateTime.now();
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(dateTime, ZoneId.of("Asia/Seoul"));
+        this.articleDate = zonedDateTime.toLocalDate();
     }
 
     public void updateTitle(String title) {
