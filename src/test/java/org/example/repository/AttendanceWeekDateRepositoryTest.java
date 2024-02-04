@@ -45,26 +45,26 @@ class AttendanceWeekDateRepositoryTest {
         );
 
         attendanceWeekDate.updateAttendanceAtToday();
-        attendanceWeekDateRepository.save(attendanceWeekDate);
+        AttendanceWeekDate attendanceWeekDate1 = attendanceWeekDateRepository.save(attendanceWeekDate);
 
         ZonedDateTime now = ZonedDateTime.now();
         DayOfWeek currentDayOfWeek = now.getDayOfWeek();
 
         switch (currentDayOfWeek) {
             case MONDAY:
-                assertThat(attendanceWeekDate.getMondayDate()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
+                assertThat(attendanceWeekDate1.getMonday()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
                 break;
             case TUESDAY:
-                assertThat(attendanceWeekDate.getTuesday()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
+                assertThat(attendanceWeekDate1.getTuesday()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
                 break;
             case WEDNESDAY:
-                assertThat(attendanceWeekDate.getWednesday()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
+                assertThat(attendanceWeekDate1.getWednesday()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
                 break;
             case THURSDAY:
-                assertThat(attendanceWeekDate.getThursday()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
+                assertThat(attendanceWeekDate1.getThursday()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
                 break;
             case FRIDAY:
-                assertThat(attendanceWeekDate.getFriday()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
+                assertThat(attendanceWeekDate1.getFriday()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
                 break;
             default:
                 break;
@@ -78,26 +78,26 @@ class AttendanceWeekDateRepositoryTest {
         );
 
         attendanceWeekDate.updateAbsenceAtToday();
-        attendanceWeekDateRepository.save(attendanceWeekDate);
+        AttendanceWeekDate attendanceWeekDate1 = attendanceWeekDateRepository.save(attendanceWeekDate);
 
         ZonedDateTime now = ZonedDateTime.now();
         DayOfWeek currentDayOfWeek = now.getDayOfWeek();
 
         switch (currentDayOfWeek) {
             case MONDAY:
-                assertThat(attendanceWeekDate.getMondayDate()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
+                assertThat(attendanceWeekDate1.getMonday()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
                 break;
             case TUESDAY:
-                assertThat(attendanceWeekDate.getTuesday()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
+                assertThat(attendanceWeekDate1.getTuesday()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
                 break;
             case WEDNESDAY:
-                assertThat(attendanceWeekDate.getWednesday()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
+                assertThat(attendanceWeekDate1.getWednesday()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
                 break;
             case THURSDAY:
-                assertThat(attendanceWeekDate.getThursday()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
+                assertThat(attendanceWeekDate1.getThursday()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
                 break;
             case FRIDAY:
-                assertThat(attendanceWeekDate.getFriday()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
+                assertThat(attendanceWeekDate1.getFriday()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
                 break;
             default:
                 break;
@@ -111,26 +111,26 @@ class AttendanceWeekDateRepositoryTest {
         );
 
         attendanceWeekDate.updateVacationAtToday();
-        attendanceWeekDateRepository.save(attendanceWeekDate);
+        AttendanceWeekDate attendanceWeekDate1 = attendanceWeekDateRepository.save(attendanceWeekDate);
 
         ZonedDateTime now = ZonedDateTime.now();
         DayOfWeek currentDayOfWeek = now.getDayOfWeek();
 
         switch (currentDayOfWeek) {
             case MONDAY:
-                assertThat(attendanceWeekDate.getMondayDate()).isEqualTo(ATTENDANCE_STATE.VACATION);
+                assertThat(attendanceWeekDate1.getMonday()).isEqualTo(ATTENDANCE_STATE.VACATION);
                 break;
             case TUESDAY:
-                assertThat(attendanceWeekDate.getTuesday()).isEqualTo(ATTENDANCE_STATE.VACATION);
+                assertThat(attendanceWeekDate1.getTuesday()).isEqualTo(ATTENDANCE_STATE.VACATION);
                 break;
             case WEDNESDAY:
-                assertThat(attendanceWeekDate.getWednesday()).isEqualTo(ATTENDANCE_STATE.VACATION);
+                assertThat(attendanceWeekDate1.getWednesday()).isEqualTo(ATTENDANCE_STATE.VACATION);
                 break;
             case THURSDAY:
-                assertThat(attendanceWeekDate.getThursday()).isEqualTo(ATTENDANCE_STATE.VACATION);
+                assertThat(attendanceWeekDate1.getThursday()).isEqualTo(ATTENDANCE_STATE.VACATION);
                 break;
             case FRIDAY:
-                assertThat(attendanceWeekDate.getFriday()).isEqualTo(ATTENDANCE_STATE.VACATION);
+                assertThat(attendanceWeekDate1.getFriday()).isEqualTo(ATTENDANCE_STATE.VACATION);
                 break;
             default:
                 break;
