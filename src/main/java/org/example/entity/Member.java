@@ -2,8 +2,6 @@ package org.example.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,8 +17,8 @@ import java.time.format.DateTimeFormatter;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "temp_member_id")
-    private Long tempMemberId;
+    @Column(name = "member_id")
+    private Long memberId;
 
     @Column(name = "first_name", length = 10, nullable = false)
     private String firstName;
@@ -43,6 +41,13 @@ public class Member {
     @Column(name = "registration", length = 10, nullable = false)
     private String registration;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "member_information_id", nullable = false)
+    private MemberInformation memberInformation;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "member_admin_id", nullable = false)
+    private MemberAdmin memberAdmin;
 
     @Builder
     public Member(String firstName, String lastName, String phoneNumber, String major, LocalDate birthDate, String studentId) {
@@ -54,6 +59,19 @@ public class Member {
         this.studentId = studentId;
     }
 
+    public void setMemberInformation(final MemberInformation memberInformation) {
+        if (memberInformation == null) {
+            throw new IllegalArgumentException("Member information cannot be null.");
+        }
+        this.memberInformation = memberInformation;
+    }
+
+    public void setMemberAdmin(final MemberAdmin memberAdmin) {
+        if (memberAdmin == null) {
+            throw new IllegalArgumentException("Member information cannot be null.");
+        }
+        this.memberAdmin = memberAdmin;
+    }
 
     public String getBirthDate() {
         return birthDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));

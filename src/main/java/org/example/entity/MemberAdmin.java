@@ -30,11 +30,21 @@ public class MemberAdmin {
     @Column(name = "grade", length = 15, nullable = false)
     private MEMBER_GRADE grade;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "memberAdmin")
+    private Member member;
+
     @Builder
     public MemberAdmin(String email, String password, MEMBER_GRADE grade) {
         this.email = email;
         this.password = password;
         this.grade = grade;
+    }
+
+    public void setMember(final Member member) {
+        if (member == null) {
+            throw new IllegalArgumentException("Member information cannot be null.");
+        }
+        this.member = member;
     }
 
     public void updateEmail(String email) {

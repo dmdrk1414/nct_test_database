@@ -44,6 +44,9 @@ public class MemberInformation {
     @Column(name = "photo", length = 255, nullable = false)
     private String photo;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "memberInformation")
+    private Member member;
+
     @Builder
     public MemberInformation(String gpa, MBTI mbti, String hobby, String specialtySkill, String advantage, String disadvantage, String introduction, String photo) {
         this.gpa = gpa;
@@ -54,6 +57,13 @@ public class MemberInformation {
         this.disadvantage = disadvantage;
         this.introduction = introduction;
         this.photo = photo;
+    }
+
+    public void setMember(final Member member) {
+        if (member == null) {
+            throw new IllegalArgumentException("Member information cannot be null.");
+        }
+        this.member = member;
     }
 
     public void updateGpa(String gpa) {
