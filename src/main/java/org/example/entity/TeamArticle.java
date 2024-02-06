@@ -3,6 +3,9 @@ package org.example.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.constant.TEAM_ARTICLE_CHECK;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,6 +18,8 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "team_article")
+@DynamicInsert // @ColumnDefault 사용 필수insert할시 Null 배제
+@DynamicUpdate // update할시 Null 배재
 public class TeamArticle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +35,10 @@ public class TeamArticle {
     @Enumerated(EnumType.STRING)
     @Column(name = "team_article_check", length = 15)
     private TEAM_ARTICLE_CHECK check;
+
+    @ColumnDefault(value = "0")
+    @Column(name = "like_count")
+    private Integer likeCount;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "team_article_date", nullable = false)
@@ -49,6 +58,16 @@ public class TeamArticle {
         this.TeamArticleDate = zonedDateTime.toLocalDate();
 
         this.check = TEAM_ARTICLE_CHECK.UNCONFIRMED;
+    }
+
+    public void subtractLike() {
+        if (this.likeCount > 0) {
+            this.likeCount = this.likeCount - 1;
+        }
+    }
+
+    public void addLike() {
+        this.likeCount = this.likeCount + 1;
     }
 
     public void updateTitle(String title) {
