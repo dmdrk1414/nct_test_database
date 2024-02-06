@@ -66,6 +66,12 @@ class AttendanceWeekDateRepositoryTest {
             case FRIDAY:
                 assertThat(attendanceWeekDate1.getFriday()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
                 break;
+            case SATURDAY:
+                assertThat(attendanceWeekDate1.getSaturday()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
+                break;
+            case SUNDAY:
+                assertThat(attendanceWeekDate1.getSunday()).isEqualTo(ATTENDANCE_STATE.ATTENDANCE);
+                break;
             default:
                 break;
         }
@@ -99,6 +105,12 @@ class AttendanceWeekDateRepositoryTest {
             case FRIDAY:
                 assertThat(attendanceWeekDate1.getFriday()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
                 break;
+            case SATURDAY:
+                assertThat(attendanceWeekDate1.getSaturday()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
+                break;
+            case SUNDAY:
+                assertThat(attendanceWeekDate1.getSunday()).isEqualTo(ATTENDANCE_STATE.ABSENCE);
+                break;
             default:
                 break;
         }
@@ -131,6 +143,12 @@ class AttendanceWeekDateRepositoryTest {
                 break;
             case FRIDAY:
                 assertThat(attendanceWeekDate1.getFriday()).isEqualTo(ATTENDANCE_STATE.VACATION);
+                break;
+            case SATURDAY:
+                assertThat(attendanceWeekDate1.getSaturday()).isEqualTo(ATTENDANCE_STATE.VACATION);
+                break;
+            case SUNDAY:
+                assertThat(attendanceWeekDate1.getSunday()).isEqualTo(ATTENDANCE_STATE.VACATION);
                 break;
             default:
                 break;
