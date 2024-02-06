@@ -1,7 +1,7 @@
 package org.example.repository;
 
-import org.example.constant.SUGGESTION_CHECK;
-import org.example.entity.Suggestion;
+import org.example.constant.TEAM_ARTICLE_CHECK;
+import org.example.entity.TeamArticle;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +12,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest()
 @AutoConfigureMockMvc
-class SuggestionRepositoryTest {
-    private final SuggestionRepository suggestionRepository;
+class TeamArticleRepositoryTest {
+    private final TeamArticleRepository suggestionRepository;
 
     @Autowired
-    SuggestionRepositoryTest(SuggestionRepository suggestionRepository) {
+    TeamArticleRepositoryTest(TeamArticleRepository suggestionRepository) {
         this.suggestionRepository = suggestionRepository;
     }
 
@@ -30,14 +30,14 @@ class SuggestionRepositoryTest {
         String title = "test title";
         String content = "test content";
 
-        Suggestion suggestion = suggestionRepository.save(Suggestion.builder()
+        TeamArticle suggestion = suggestionRepository.save(TeamArticle.builder()
                 .title(title)
                 .content(content)
                 .build());
 
         assertThat(suggestion.getTitle()).isEqualTo(title);
         assertThat(suggestion.getContent()).isEqualTo(content);
-        assertThat(suggestion.getCheck()).isEqualTo(SUGGESTION_CHECK.UNCONFIRMED);
+        assertThat(suggestion.getCheck()).isEqualTo(TEAM_ARTICLE_CHECK.UNCONFIRMED);
     }
 
     @Test
@@ -47,17 +47,17 @@ class SuggestionRepositoryTest {
         String updateTitle = "update title";
         String updateContent = "update content";
 
-        Suggestion suggestion = suggestionRepository.save(Suggestion.builder()
+        TeamArticle suggestion = suggestionRepository.save(TeamArticle.builder()
                 .title(title)
                 .content(content)
                 .build());
 
         suggestion.updateTitle(updateTitle);
         suggestion.updateContent(updateContent);
-        suggestion.updateCheck(SUGGESTION_CHECK.CONFIRMED);
-        Suggestion suggestion1 = suggestionRepository.save(suggestion);
+        suggestion.updateCheck(TEAM_ARTICLE_CHECK.CONFIRMED);
+        TeamArticle suggestion1 = suggestionRepository.save(suggestion);
         assertThat(suggestion1.getTitle()).isEqualTo(updateTitle);
         assertThat(suggestion1.getContent()).isEqualTo(updateContent);
-        assertThat(suggestion1.getCheck()).isEqualTo(SUGGESTION_CHECK.CONFIRMED);
+        assertThat(suggestion1.getCheck()).isEqualTo(TEAM_ARTICLE_CHECK.CONFIRMED);
     }
 }

@@ -16,14 +16,14 @@ import java.time.format.DateTimeFormatter;
 @ToString
 @NoArgsConstructor
 @Entity
-@Table(name = "suggestion_comment")
+@Table(name = "team_article_comment")
 @DynamicInsert // @ColumnDefault 사용 필수insert할시 Null 배제
 @DynamicUpdate // update할시 Null 배재
-public class SuggestionComment {
+public class TeamArticleComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "suggestion_comment_id")
-    private Long suggestionCommentId;
+    @Column(name = "team_article_comment_id")
+    private Long teamArticleCommentId;
 
     @Column(name = "content", length = 255, nullable = false)
     private String content;
@@ -37,7 +37,7 @@ public class SuggestionComment {
     private Integer likeCount;
 
     @Builder
-    public SuggestionComment(String content) {
+    public TeamArticleComment(String content) {
         this.content = content;
     }
 

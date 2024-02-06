@@ -1,6 +1,6 @@
 package org.example.constant;
 
-public enum SUGGESTION_CHECK {
+public enum TEAM_ARTICLE_CHECK {
     CONFIRMED,
     UNCONFIRMED
 }

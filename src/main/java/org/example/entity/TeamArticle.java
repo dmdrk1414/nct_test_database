@@ -2,7 +2,7 @@ package org.example.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.constant.SUGGESTION_CHECK;
+import org.example.constant.TEAM_ARTICLE_CHECK;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,12 +14,12 @@ import java.time.ZonedDateTime;
 @ToString
 @NoArgsConstructor
 @Entity
-@Table(name = "suggestion")
-public class Suggestion {
+@Table(name = "team_article")
+public class TeamArticle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "suggestion_id")
-    private Long suggestionId;
+    @Column(name = "team_article_id")
+    private Long teamArticleId;
 
     @Column(name = "title", length = 255, nullable = false)
     private String title;
@@ -28,15 +28,15 @@ public class Suggestion {
     private String content;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "suggestion_check", length = 15)
-    private SUGGESTION_CHECK check;
+    @Column(name = "team_article_check", length = 15)
+    private TEAM_ARTICLE_CHECK check;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "suggestion_date", nullable = false)
-    private LocalDate suggestionDate;
+    @Column(name = "team_article_date", nullable = false)
+    private LocalDate TeamArticleDate;
 
     @Builder
-    public Suggestion(String title, String content) {
+    public TeamArticle(String title, String content) {
         this.title = title;
         this.content = content;
     }
@@ -46,9 +46,9 @@ public class Suggestion {
         // https://www.daleseo.com/java8-zoned-date-time/
         LocalDateTime dateTime = LocalDateTime.now();
         ZonedDateTime zonedDateTime = ZonedDateTime.of(dateTime, ZoneId.of("Asia/Seoul"));
-        this.suggestionDate = zonedDateTime.toLocalDate();
+        this.TeamArticleDate = zonedDateTime.toLocalDate();
 
-        this.check = SUGGESTION_CHECK.UNCONFIRMED;
+        this.check = TEAM_ARTICLE_CHECK.UNCONFIRMED;
     }
 
     public void updateTitle(String title) {
@@ -59,7 +59,7 @@ public class Suggestion {
         this.content = content;
     }
 
-    public void updateCheck(SUGGESTION_CHECK check) {
+    public void updateCheck(TEAM_ARTICLE_CHECK check) {
         this.check = check;
     }
 }

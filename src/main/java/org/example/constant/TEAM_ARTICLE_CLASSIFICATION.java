@@ -1,6 +1,6 @@
 package org.example.constant;
 
-public enum SUGGESTION_CLASSIFICATION {
+public enum TEAM_ARTICLE_CLASSIFICATION {
     CONFIDENTIAL,
     FREEDOM,
     SUGGESTION

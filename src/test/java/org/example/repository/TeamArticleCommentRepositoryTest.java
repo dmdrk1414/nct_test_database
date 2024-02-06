@@ -1,6 +1,6 @@
 package org.example.repository;
 
-import org.example.entity.SuggestionComment;
+import org.example.entity.TeamArticleComment;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +15,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest()
 @AutoConfigureMockMvc
-class SuggestionCommentRepositoryTest {
-    private final SuggestionCommentRepository suggestionCommentRepository;
+class TeamArticleCommentRepositoryTest {
+    private final TeamArticleCommentRepository suggestionCommentRepository;
 
     @Autowired
-    SuggestionCommentRepositoryTest(SuggestionCommentRepository suggestionCommentRepository) {
+    TeamArticleCommentRepositoryTest(TeamArticleCommentRepository suggestionCommentRepository) {
         this.suggestionCommentRepository = suggestionCommentRepository;
     }
 
@@ -36,12 +36,12 @@ class SuggestionCommentRepositoryTest {
         ZonedDateTime zonedDateTime = ZonedDateTime.of(dateTime, ZoneId.of("Asia/Seoul"));
         String date = String.valueOf(zonedDateTime.toLocalDate());
 
-        SuggestionComment suggestionComment = suggestionCommentRepository.save(
-                SuggestionComment.builder()
+        TeamArticleComment suggestionComment = suggestionCommentRepository.save(
+                TeamArticleComment.builder()
                         .content(content)
                         .build()
         );
-        SuggestionComment target = suggestionCommentRepository.findById(suggestionComment.getSuggestionCommentId()).get();
+        TeamArticleComment target = suggestionCommentRepository.findById(suggestionComment.getTeamArticleCommentId()).get();
 
         assertThat(target.getContent()).isEqualTo(content);
         assertThat(target.getLikeCount()).isEqualTo(0);
@@ -53,16 +53,16 @@ class SuggestionCommentRepositoryTest {
         String content = "test content";
         String updateContent = "update content";
 
-        SuggestionComment suggestionComment = suggestionCommentRepository.save(
-                SuggestionComment.builder()
+        TeamArticleComment suggestionComment = suggestionCommentRepository.save(
+                TeamArticleComment.builder()
                         .content(content)
                         .build()
         );
-        SuggestionComment suggestionComment1 = suggestionCommentRepository.findById(suggestionComment.getSuggestionCommentId()).get();
+        TeamArticleComment suggestionComment1 = suggestionCommentRepository.findById(suggestionComment.getTeamArticleCommentId()).get();
         suggestionComment1.updateContent(updateContent);
         suggestionComment1.addLike();
 
-        SuggestionComment target = suggestionCommentRepository.save(suggestionComment1);
+        TeamArticleComment target = suggestionCommentRepository.save(suggestionComment1);
 
         assertThat(target.getContent()).isEqualTo(updateContent);
         assertThat(target.getLikeCount()).isEqualTo(1);
