@@ -41,7 +41,7 @@ public class TeamArticleComment {
     private Integer declarationCount;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "team_article_id")
     private TeamArticle teamArticle;
 

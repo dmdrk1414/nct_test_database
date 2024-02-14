@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -50,11 +51,11 @@ public class TeamArticle {
     private LocalDate TeamArticleDate;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "teamArticle")
-    private List<TeamArticleComment> teamArticleComments;
+    private List<TeamArticleComment> teamArticleComments = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_article_classification_id")
-    private TeamArticleClassification teamArticleClassification;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "team_article_classification_id")
+//    private TeamArticleClassification teamArticleClassification;
 
     @Builder
     public TeamArticle(String title, String content) {
@@ -111,15 +112,15 @@ public class TeamArticle {
         return teamArticleComments;
     }
 
-    public TeamArticleClassification getTeamArticleClassification() {
-        return teamArticleClassification;
-    }
+//    public TeamArticleClassification getTeamArticleClassification() {
+//        return teamArticleClassification;
+//    }
 
-    public void setTeamArticleClassification(final TeamArticleClassification teamArticleClassification) {
-        this.teamArticleClassification = teamArticleClassification;
-        // 무한루프에 빠지지 않도록 체크
-        if (!teamArticleClassification.getTeamArticles().contains(this)) {
-            teamArticleClassification.getTeamArticles().add(this);
-        }
-    }
+//    public void setTeamArticleClassification(final TeamArticleClassification teamArticleClassification) {
+//        this.teamArticleClassification = teamArticleClassification;
+//        // 무한루프에 빠지지 않도록 체크
+//        if (!teamArticleClassification.getTeamArticles().contains(this)) {
+//            teamArticleClassification.getTeamArticles().add(this);
+//        }
+//    }
 }

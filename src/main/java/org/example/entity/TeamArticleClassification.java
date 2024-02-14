@@ -21,8 +21,8 @@ public class TeamArticleClassification {
     @Column(name = "classification", length = 15, nullable = false)
     private TEAM_ARTICLE_CLASSIFICATION classification;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "teamArticleClassification")
-    private List<TeamArticle> teamArticles;
+//    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "teamArticleClassification")
+//    private List<TeamArticle> teamArticles;
 
     @Builder
     public TeamArticleClassification(TEAM_ARTICLE_CLASSIFICATION classification) {
@@ -33,14 +33,14 @@ public class TeamArticleClassification {
         this.classification = classification;
     }
 
-    public List<TeamArticle> getTeamArticles() {
-        return teamArticles;
-    }
+//    public List<TeamArticle> getTeamArticles() {
+//        return teamArticles;
+//    }
 
-    public void addTeamArticle(final TeamArticle teamArticle) {
-        this.teamArticles.add(teamArticle);
-        if (teamArticle.getTeamArticleClassification() != this) { // 무한루프에 빠지지 않도록 체크
-            teamArticle.setTeamArticleClassification(this);
-        }
-    }
+//    public void addTeamArticle(final TeamArticle teamArticle) {
+//        this.teamArticles.add(teamArticle);
+//        if (teamArticle.getTeamArticleClassification() != this) { // 무한루프에 빠지지 않도록 체크
+//            teamArticle.setTeamArticleClassification(this);
+//        }
+//    }
 }
