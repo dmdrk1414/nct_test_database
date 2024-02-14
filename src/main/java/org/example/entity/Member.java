@@ -26,14 +26,14 @@ public class Member {
     @Column(name = "last_name", length = 20, nullable = false)
     private String lastName;
 
-    @Column(name = "phone_number", length = 20, nullable = false)
-    private String phoneNumber;
+    @Column(name = "nick_name", length = 30, nullable = false)
+    private String nickName;
+
+    @Column(name = "email", length = 40, nullable = false, unique = true)
+    private String email;
 
     @Column(name = "major", length = 20, nullable = false)
     private String major;
-
-    @Column(name = "birth_date", nullable = false)
-    private LocalDate birthDate;
 
     @Column(name = "student_id", length = 15, nullable = false)
     private String studentId;
@@ -41,42 +41,16 @@ public class Member {
     @Column(name = "registration", length = 10, nullable = false)
     private String registration;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "member_information_id", nullable = false)
-    private MemberInformation memberInformation;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "member_admin_id", nullable = false)
-    private MemberAdmin memberAdmin;
-
     @Builder
-    public Member(String firstName, String lastName, String phoneNumber, String major, LocalDate birthDate, String studentId) {
+    public Member(String firstName, String lastName, String nickName, String email, String major, String studentId, String registration) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+        this.nickName = nickName;
+        this.email = email;
         this.major = major;
-        this.birthDate = birthDate;
         this.studentId = studentId;
+        this.registration = registration;
     }
-
-    public void setMemberInformation(final MemberInformation memberInformation) {
-        if (memberInformation == null) {
-            throw new IllegalArgumentException("Member information cannot be null.");
-        }
-        this.memberInformation = memberInformation;
-    }
-
-    public void setMemberAdmin(final MemberAdmin memberAdmin) {
-        if (memberAdmin == null) {
-            throw new IllegalArgumentException("Member information cannot be null.");
-        }
-        this.memberAdmin = memberAdmin;
-    }
-
-    public String getBirthDate() {
-        return birthDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-    }
-
 
     @PrePersist
     protected void onCreate() {
@@ -94,16 +68,16 @@ public class Member {
         this.lastName = lastName;
     }
 
-    public void updatePhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void updateNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public void updateEmail(String email) {
+        this.email = email;
     }
 
     public void updateMajor(String major) {
         this.major = major;
-    }
-
-    public void updateBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
     }
 
     public void updateStudentId(String studentId) {
