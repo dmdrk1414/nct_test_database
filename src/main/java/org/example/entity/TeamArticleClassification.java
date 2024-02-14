@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.example.constant.TEAM_ARTICLE_CLASSIFICATION;
 
+import java.util.List;
+
 @Getter
 @ToString
 @NoArgsConstructor
@@ -19,6 +21,9 @@ public class TeamArticleClassification {
     @Column(name = "classification", length = 15, nullable = false)
     private TEAM_ARTICLE_CLASSIFICATION classification;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "teamArticleClassification")
+    private List<TeamArticle> teamArticles;
+
     @Builder
     public TeamArticleClassification(TEAM_ARTICLE_CLASSIFICATION classification) {
         this.classification = classification;
@@ -26,5 +31,16 @@ public class TeamArticleClassification {
 
     public void updateClassification(TEAM_ARTICLE_CLASSIFICATION classification) {
         this.classification = classification;
+    }
+
+    public List<TeamArticle> getTeamArticles() {
+        return teamArticles;
+    }
+
+    public void addTeamArticle(final TeamArticle teamArticle) {
+        this.teamArticles.add(teamArticle);
+        if (teamArticle.getTeamArticleClassification() != this) { // 무한루프에 빠지지 않도록 체크
+            teamArticle.setTeamArticleClassification(this);
+        }
     }
 }

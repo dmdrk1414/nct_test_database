@@ -49,12 +49,12 @@ public class TeamArticle {
     @Column(name = "team_article_date", nullable = false)
     private LocalDate TeamArticleDate;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "team_article_classification_id")
-//    private TeamArticleClassification teamArticleClassification;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "team_article_comment_id")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "teamArticle")
     private List<TeamArticleComment> teamArticleComments;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_article_classification_id")
+    private TeamArticleClassification teamArticleClassification;
 
     @Builder
     public TeamArticle(String title, String content) {
@@ -100,7 +100,7 @@ public class TeamArticle {
         this.suggestionAnswer = suggestionAnswer;
     }
 
-    public void addComment(final TeamArticleComment teamArticleComment) {
+    public void addTeamArticleComment(final TeamArticleComment teamArticleComment) {
         this.teamArticleComments.add(teamArticleComment);
         if (teamArticleComment.getTeamArticle() != this) { // 무한루프에 빠지지 않도록 체크
             teamArticleComment.setTeamArticle(this);
@@ -109,5 +109,17 @@ public class TeamArticle {
 
     public List<TeamArticleComment> getTeamArticleComments() {
         return teamArticleComments;
+    }
+
+    public TeamArticleClassification getTeamArticleClassification() {
+        return teamArticleClassification;
+    }
+
+    public void setTeamArticleClassification(final TeamArticleClassification teamArticleClassification) {
+        this.teamArticleClassification = teamArticleClassification;
+        // 무한루프에 빠지지 않도록 체크
+        if (!teamArticleClassification.getTeamArticles().contains(this)) {
+            teamArticleClassification.getTeamArticles().add(this);
+        }
     }
 }
