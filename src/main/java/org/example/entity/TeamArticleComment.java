@@ -40,6 +40,11 @@ public class TeamArticleComment {
     @Column(name = "declaration_count")
     private Integer declarationCount;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_article_id")
+    private TeamArticle teamArticle;
+
     @Builder
     public TeamArticleComment(String content) {
         this.content = content;
@@ -79,5 +84,18 @@ public class TeamArticleComment {
 
     public String getCommentDate() {
         return this.commentDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    }
+
+
+    public TeamArticle getTeamArticle() {
+        return teamArticle;
+    }
+
+    public void setTeamArticle(final TeamArticle teamArticle) {
+        this.teamArticle = teamArticle;
+        // 무한루프에 빠지지 않도록 체크
+        if (!teamArticle.getTeamArticleComments().contains(this)) {
+            teamArticle.getTeamArticleComments().add(this);
+        }
     }
 }

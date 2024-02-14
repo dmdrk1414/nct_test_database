@@ -3,6 +3,7 @@ package org.example.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.constant.TEAM_ARTICLE_CHECK;
+import org.example.constant.TEAM_ARTICLE_CLASSIFICATION;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.List;
 
 
 @Getter
@@ -47,11 +49,19 @@ public class TeamArticle {
     @Column(name = "team_article_date", nullable = false)
     private LocalDate TeamArticleDate;
 
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "team_article_classification_id")
+//    private TeamArticleClassification teamArticleClassification;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "team_article_comment_id")
+    private List<TeamArticleComment> teamArticleComments;
+
     @Builder
     public TeamArticle(String title, String content) {
         this.title = title;
         this.content = content;
     }
+
 
     @PrePersist
     protected void onCreate() {
@@ -88,5 +98,16 @@ public class TeamArticle {
 
     public void updateSuggestionAnswer(String suggestionAnswer) {
         this.suggestionAnswer = suggestionAnswer;
+    }
+
+    public void addComment(final TeamArticleComment teamArticleComment) {
+        this.teamArticleComments.add(teamArticleComment);
+        if (teamArticleComment.getTeamArticle() != this) { // 무한루프에 빠지지 않도록 체크
+            teamArticleComment.setTeamArticle(this);
+        }
+    }
+
+    public List<TeamArticleComment> getTeamArticleComments() {
+        return teamArticleComments;
     }
 }
