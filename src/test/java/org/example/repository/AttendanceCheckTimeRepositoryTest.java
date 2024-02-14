@@ -55,6 +55,8 @@ class AttendanceCheckTimeRepositoryTest {
             assertThat(attendanceCheckTimes.get(i).getWednesday()).isEqualTo(ATTENDANCE_TIME.TEN);
             assertThat(attendanceCheckTimes.get(i).getThursday()).isEqualTo(ATTENDANCE_TIME.TEN);
             assertThat(attendanceCheckTimes.get(i).getFriday()).isEqualTo(ATTENDANCE_TIME.TEN);
+            assertThat(attendanceCheckTimes.get(i).getSaturday()).isEqualTo(ATTENDANCE_TIME.TEN);
+            assertThat(attendanceCheckTimes.get(i).getSunday()).isEqualTo(ATTENDANCE_TIME.TEN);
         }
     }
 
@@ -68,6 +70,8 @@ class AttendanceCheckTimeRepositoryTest {
         attendanceCheckTime.updateWednesday(ATTENDANCE_TIME.SEVENTEEN);
         attendanceCheckTime.updateThursday(ATTENDANCE_TIME.EIGHTEEN);
         attendanceCheckTime.updateFriday(ATTENDANCE_TIME.NINETEEN);
+        attendanceCheckTime.updateSaturday(ATTENDANCE_TIME.NINETEEN);
+        attendanceCheckTime.updateSunday(ATTENDANCE_TIME.NINETEEN);
 
         attendanceCheckTime.updateLongVacation(LONG_VACATION.APPLIED);
 
@@ -77,6 +81,8 @@ class AttendanceCheckTimeRepositoryTest {
         assertThat(target.getWednesday()).isEqualTo(ATTENDANCE_TIME.SEVENTEEN);
         assertThat(target.getThursday()).isEqualTo(ATTENDANCE_TIME.EIGHTEEN);
         assertThat(target.getFriday()).isEqualTo(ATTENDANCE_TIME.NINETEEN);
+        assertThat(target.getSaturday()).isEqualTo(ATTENDANCE_TIME.NINETEEN);
+        assertThat(target.getSunday()).isEqualTo(ATTENDANCE_TIME.NINETEEN);
 
         assertThat(target.getLongVacation()).isEqualTo(LONG_VACATION.APPLIED);
     }

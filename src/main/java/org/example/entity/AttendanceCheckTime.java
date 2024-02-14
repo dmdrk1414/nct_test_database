@@ -8,7 +8,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 /**
- * 회원들의 출석시간을 월, 화, 수 목, 금요일에 지정할 수 있다.
+ * 회원들의 출석시간을 월, 화, 수 목, 금, 토, 일요일에 지정할 수 있다.
  */
 @Getter
 @ToString
