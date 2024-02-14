@@ -38,7 +38,7 @@ class TeamArticleRepositoryTest {
         TeamArticle teamArticle1 = teamArticleRepository.findById(teamArticle.getTeamArticleId()).get();
         assertThat(teamArticle1.getTitle()).isEqualTo(title);
         assertThat(teamArticle1.getContent()).isEqualTo(content);
-        assertThat(teamArticle1.getCheck()).isEqualTo(TEAM_ARTICLE_CHECK.UNCONFIRMED);
+        assertThat(teamArticle1.getAnswerCheck()).isEqualTo(TEAM_ARTICLE_CHECK.UNCONFIRMED);
         assertThat(teamArticle1.getLikeCount()).isEqualTo(0);
     }
 
@@ -56,11 +56,11 @@ class TeamArticleRepositoryTest {
 
         teamArticle.updateTitle(updateTitle);
         teamArticle.updateContent(updateContent);
-        teamArticle.updateCheck(TEAM_ARTICLE_CHECK.CONFIRMED);
+        teamArticle.updateAnswerCheck(TEAM_ARTICLE_CHECK.CONFIRMED);
 
         TeamArticle teamArticle1 = teamArticleRepository.save(teamArticle);
         assertThat(teamArticle1.getTitle()).isEqualTo(updateTitle);
         assertThat(teamArticle1.getContent()).isEqualTo(updateContent);
-        assertThat(teamArticle1.getCheck()).isEqualTo(TEAM_ARTICLE_CHECK.CONFIRMED);
+        assertThat(teamArticle1.getAnswerCheck()).isEqualTo(TEAM_ARTICLE_CHECK.CONFIRMED);
     }
 }

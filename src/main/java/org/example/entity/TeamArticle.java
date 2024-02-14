@@ -34,11 +34,14 @@ public class TeamArticle {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "team_article_check", length = 15)
-    private TEAM_ARTICLE_CHECK check;
+    private TEAM_ARTICLE_CHECK answerCheck;
 
     @ColumnDefault(value = "0")
     @Column(name = "like_count")
     private Integer likeCount;
+
+    @Column(name = "suggestion_answer", length = 1000, nullable = false)
+    private String suggestionAnswer = "";
 
     @Temporal(TemporalType.DATE)
     @Column(name = "team_article_date", nullable = false)
@@ -57,7 +60,20 @@ public class TeamArticle {
         ZonedDateTime zonedDateTime = ZonedDateTime.of(dateTime, ZoneId.of("Asia/Seoul"));
         this.TeamArticleDate = zonedDateTime.toLocalDate();
 
-        this.check = TEAM_ARTICLE_CHECK.UNCONFIRMED;
+        this.answerCheck = TEAM_ARTICLE_CHECK.UNCONFIRMED;
+    }
+
+
+    public void updateTitle(String title) {
+        this.title = title;
+    }
+
+    public void updateContent(String content) {
+        this.content = content;
+    }
+
+    public void updateAnswerCheck(TEAM_ARTICLE_CHECK check) {
+        this.answerCheck = check;
     }
 
     public void subtractLike() {
@@ -70,15 +86,7 @@ public class TeamArticle {
         this.likeCount = this.likeCount + 1;
     }
 
-    public void updateTitle(String title) {
-        this.title = title;
-    }
-
-    public void updateContent(String content) {
-        this.content = content;
-    }
-
-    public void updateCheck(TEAM_ARTICLE_CHECK check) {
-        this.check = check;
+    public void updateSuggestionAnswer(String suggestionAnswer) {
+        this.suggestionAnswer = suggestionAnswer;
     }
 }
