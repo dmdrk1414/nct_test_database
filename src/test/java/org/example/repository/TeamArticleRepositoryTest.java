@@ -13,31 +13,33 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest()
 @AutoConfigureMockMvc
 class TeamArticleRepositoryTest {
-    private final TeamArticleRepository suggestionRepository;
+    private final TeamArticleRepository teamArticleRepository;
 
     @Autowired
-    TeamArticleRepositoryTest(TeamArticleRepository suggestionRepository) {
-        this.suggestionRepository = suggestionRepository;
+    TeamArticleRepositoryTest(TeamArticleRepository teamArticleRepository) {
+        this.teamArticleRepository = teamArticleRepository;
     }
 
     @BeforeEach
     void setUp() {
-        this.suggestionRepository.deleteAll();
+        this.teamArticleRepository.deleteAll();
     }
 
     @Test
-    void Suggestion_저장_테스트() {
+    void TeamArticle_저장_테스트() {
         String title = "test title";
         String content = "test content";
 
-        TeamArticle suggestion = suggestionRepository.save(TeamArticle.builder()
+        TeamArticle teamArticle = teamArticleRepository.save(TeamArticle.builder()
                 .title(title)
                 .content(content)
                 .build());
 
-        assertThat(suggestion.getTitle()).isEqualTo(title);
-        assertThat(suggestion.getContent()).isEqualTo(content);
-        assertThat(suggestion.getCheck()).isEqualTo(TEAM_ARTICLE_CHECK.UNCONFIRMED);
+        TeamArticle teamArticle1 = teamArticleRepository.findById(teamArticle.getTeamArticleId()).get();
+        assertThat(teamArticle1.getTitle()).isEqualTo(title);
+        assertThat(teamArticle1.getContent()).isEqualTo(content);
+        assertThat(teamArticle1.getCheck()).isEqualTo(TEAM_ARTICLE_CHECK.UNCONFIRMED);
+        assertThat(teamArticle1.getLikeCount()).isEqualTo(0);
     }
 
     @Test
@@ -47,17 +49,18 @@ class TeamArticleRepositoryTest {
         String updateTitle = "update title";
         String updateContent = "update content";
 
-        TeamArticle suggestion = suggestionRepository.save(TeamArticle.builder()
+        TeamArticle teamArticle = teamArticleRepository.save(TeamArticle.builder()
                 .title(title)
                 .content(content)
                 .build());
 
-        suggestion.updateTitle(updateTitle);
-        suggestion.updateContent(updateContent);
-        suggestion.updateCheck(TEAM_ARTICLE_CHECK.CONFIRMED);
-        TeamArticle suggestion1 = suggestionRepository.save(suggestion);
-        assertThat(suggestion1.getTitle()).isEqualTo(updateTitle);
-        assertThat(suggestion1.getContent()).isEqualTo(updateContent);
-        assertThat(suggestion1.getCheck()).isEqualTo(TEAM_ARTICLE_CHECK.CONFIRMED);
+        teamArticle.updateTitle(updateTitle);
+        teamArticle.updateContent(updateContent);
+        teamArticle.updateCheck(TEAM_ARTICLE_CHECK.CONFIRMED);
+
+        TeamArticle teamArticle1 = teamArticleRepository.save(teamArticle);
+        assertThat(teamArticle1.getTitle()).isEqualTo(updateTitle);
+        assertThat(teamArticle1.getContent()).isEqualTo(updateContent);
+        assertThat(teamArticle1.getCheck()).isEqualTo(TEAM_ARTICLE_CHECK.CONFIRMED);
     }
 }
