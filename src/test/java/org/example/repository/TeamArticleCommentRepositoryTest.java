@@ -45,6 +45,7 @@ class TeamArticleCommentRepositoryTest {
 
         assertThat(target.getContent()).isEqualTo(content);
         assertThat(target.getLikeCount()).isEqualTo(0);
+        assertThat(target.getDeclarationCount()).isEqualTo(0);
         assertThat(target.getCommentDate()).isEqualTo(date);
     }
 

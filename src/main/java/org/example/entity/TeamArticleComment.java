@@ -36,6 +36,10 @@ public class TeamArticleComment {
     @Column(name = "like_count")
     private Integer likeCount;
 
+    @ColumnDefault(value = "0")
+    @Column(name = "declaration_count")
+    private Integer declarationCount;
+
     @Builder
     public TeamArticleComment(String content) {
         this.content = content;
@@ -61,6 +65,16 @@ public class TeamArticleComment {
 
     public void addLike() {
         this.likeCount = this.likeCount + 1;
+    }
+
+    public void subtractDeclaration() {
+        if (this.declarationCount > 0) {
+            this.declarationCount = this.declarationCount - 1;
+        }
+    }
+
+    public void addDeclaration() {
+        this.declarationCount = this.declarationCount + 1;
     }
 
     public String getCommentDate() {
