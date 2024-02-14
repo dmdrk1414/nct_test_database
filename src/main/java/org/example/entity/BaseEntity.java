@@ -2,6 +2,7 @@ package org.example.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -12,52 +13,22 @@ import java.time.*;
 
 @Getter
 @ToString
+@MappedSuperclass
+@SuperBuilder
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@Entity
 @EntityListeners(AuditingEntityListener.class) // 추가
-@Table(name = "base_entity")
 public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "base_entity_id")
     private Long baseEntityId;
 
-    @Column(name = "crt_date")
-    @CreatedDate
-    private LocalDateTime crtDt;
-
+    @Column(name = "update_date", nullable = false)
     @LastModifiedDate
-    private LocalDateTime updatedDt;
+    private LocalDateTime updateDate;
 
-    @Column(name = "crt_timestamp")
+    @Column(name = "create_date", nullable = false)
     @CreationTimestamp
-    private LocalDateTime crt_timestamp;
+    private LocalDateTime createDate;
 
-    @Column(name = "udt_dt")
-    @UpdateTimestamp
-    private LocalDateTime udtDt;
-
-//    @Temporal(TemporalType.TIMESTAMP)
-//    @Column(name = "attendance_date")
-//    private LocalDateTime attendanceDate;
-//
-//    @Temporal(TemporalType.TIME)
-//    private LocalTime time;
-//
-//    @Temporal(TemporalType.DATE)
-//    private LocalDate date;
-//
-//    @PrePersist
-//    protected void onCreate() {
-////        this.attendanceDate = LocalDate.now();
-//        LocalDateTime dateTime = LocalDateTime.now();
-//        ZonedDateTime zonedDateTime = ZonedDateTime.of(dateTime, ZoneId.of("Asia/Seoul"));
-//        this.attendanceDate = zonedDateTime.toLocalDateTime();
-//        this.time = zonedDateTime.toLocalTime();
-//        this.date = zonedDateTime.toLocalDate();
-
-//      this.attendanceDate = LocalDate.now();
-//    }
 }
