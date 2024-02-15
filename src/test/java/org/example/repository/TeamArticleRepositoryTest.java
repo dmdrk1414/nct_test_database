@@ -58,6 +58,7 @@ class TeamArticleRepositoryTest {
                         .content(content)
                         .build()
         );
+        
 
         teamArticle_1.addTeamArticleComment(teamArticleComment_1);
         teamArticle_1.addTeamArticleComment(teamArticleComment_2);
