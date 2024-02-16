@@ -21,7 +21,6 @@ public class MemberService {
         return memberRepository.findById(id).get();
     }
 
-
     public String getEmail(Long id) {
         Member member = memberRepository.findById(id).get();
         return member.getEmail();
